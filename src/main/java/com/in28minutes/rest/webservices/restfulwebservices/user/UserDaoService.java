@@ -25,5 +25,16 @@ public class UserDaoService {
     }
     
     // public User save(User user)
-    // public User findOne(int id)
+    public User findOne(int id){
+        
+        // Predicate<? super User> predicate = user -> user.getId().equals(id);
+        // return users.stream().filter(predicate).findFirst.get();
+
+        for (User user : users) {
+            if (user.getId() == id) {
+                return user;
+            }
+        }
+        return null; // Return null if no user with the given ID is found
+    }
 }
