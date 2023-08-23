@@ -29,8 +29,8 @@ public class UserResource{
     }
 
     // POS /users
-    // @PostMapping("/users")
-    // public void createUser(@RequestBody User user){
-
-    // }
+    @PostMapping("/users")
+    public void createUser(@RequestBody User user){
+        service.save(user);
+    }
 }
