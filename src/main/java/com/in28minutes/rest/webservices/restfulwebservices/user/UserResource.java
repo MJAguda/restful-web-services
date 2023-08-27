@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UserResource{
     private UserDaoService service;
@@ -45,8 +47,9 @@ public class UserResource{
 
     // POS /users
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user){
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user){
         User savedUser = service.save(user);
+        
         // return uri of the created user as part of the response
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                         .path("/{id}") //Append the userId to the path "/users"
