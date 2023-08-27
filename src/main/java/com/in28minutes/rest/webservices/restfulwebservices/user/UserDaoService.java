@@ -43,4 +43,11 @@ public class UserDaoService {
         // }
         // return null; // Return null if no user with the given ID is found
     }
+
+     public void deleteById(int id){
+        
+        Predicate<? super User> predicate = user -> user.getId().equals(id);
+        users.removeIf(predicate);
+
+     }
 }
